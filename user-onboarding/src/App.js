@@ -50,7 +50,8 @@ function App() {
         values = {formValues} 
         change = {handleChange} 
         errors = {formErrors} 
-        submit/>
+        submit = {handleSubmit}
+      />
     </div>
   );
 }
