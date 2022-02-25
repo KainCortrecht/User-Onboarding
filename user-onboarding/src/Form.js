@@ -1,10 +1,26 @@
 import React from "react";
 
 const Form = (props) => {
+
+    const {change, submit} = props;
+    const {username, email, password, tos} = props.values;
+
+    const onChange = (e) => {
+        const {name, value, checked, type} = e.target;
+        const newVal = type === 'checkbox' ? checked : value;
+        change(name, newVal);
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        submit();
+    }
+    
+
   return (
     <div>
       <h1>What a cool form!</h1>
-      <form>
+      <form onSubmit = {onSubmit}>
         <label>
           Name:
           <input
@@ -32,14 +48,15 @@ const Form = (props) => {
           />
         </label>
         <label>
-          Terms ofService:
+          Terms of Service:
           <input
             type="checkbox"
             name="tos"
-            checked={checked}
+            checked={tos}
             onChange={onChange}
           />
         </label>
+        <form type = 'submit' value = 'Create a Friend!'/>
       </form>
     </div>
   );
